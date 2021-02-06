@@ -33,6 +33,8 @@ namespace MCS_oneday_intern.Controllers
             return View();
         }
 
+        
+
         public IActionResult Privacy()
         {
             return View();
