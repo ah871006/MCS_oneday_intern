@@ -42,7 +42,7 @@
                                             <button type="button" class="btn btn-default get" data-bind="click: function(){GotoProduct(@quantity)}">Get it now</button>
                                         </div>
                                         <div class="col-sm-6">
-                                            <img src="@Product.imageURL" class="girl img-responsive" alt="" />
+                                            <img src="@Product.ImageURL" class="girl img-responsive" alt="" />
                                             <img src="images/home/pricing.png" class="pricing" alt="" />
                                         </div>
                                     </div>
@@ -57,7 +57,7 @@
                                             <button type="button" class="btn btn-default get" data-bind="click: function(){GotoProduct(@quantity)}">Get it now</button>
                                         </div>
                                         <div class="col-sm-6">
-                                            <img src="@Product.imageURL" class="girl img-responsive" alt="" />
+                                            <img src="@Product.ImageURL" class="girl img-responsive" alt="" />
                                             <img src="images/home/pricing.png" class="pricing" alt="" />
                                         </div>
                                     </div>                                }
@@ -126,7 +126,7 @@
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center">
-                                            <img src="@Product.imageURL" alt="" />
+                                            <img src="@Product.ImageURL" alt="" />
                                             <h2>$@Product.Price</h2>
                                             <p>@Product.Remark</p>
                                             <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
@@ -449,13 +449,12 @@
     
 </div>
 <script src="~/js/Shopping/index.js" asp-append-version="true"></script>
-<script src="js/jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>
+<script src="~/js/jquery.js"></script>
+<script src="~/js/bootstrap.min.js"></script>
 
 <script>
     $(function () {
         var urlDict = {
-            productdetail: '@Url.Action("ProductDetail")'
         };
 
         var vm = new IndexViewModel(urlDict);

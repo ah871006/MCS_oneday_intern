@@ -8,30 +8,34 @@ namespace MCS_oneday_intern.Models
     public class Product
     {
         /// <summary>
-        /// Product_Name	Category	Price	Remark	imageURL
+        /// 產品名稱
         /// </summary>
         public string Product_Name { get; set; }
 
         /// <summary>
-        /// Product_Name		Price	Remark	imageURL
+        /// 產品種類
         /// </summary>
         public string Category { get; set; }
 
         /// <summary>
-        /// Product_Name		Price	Remark	imageURL
+        /// 價格
         /// </summary>
         public int Price { get; set; }
 
         /// <summary>
-        /// Product_Name		Price	Remark	imageURL
+        /// 說明or備註
         /// </summary>
         public string Remark { get; set; }
 
         /// <summary>
-        /// Product_Name		Price	Remark	imageURL
+        /// 主圖片URL
         /// </summary>
-        public string imageURL { get; set; }
+        public string ImageURL { get; set; }
 
+        /// <summary>
+        /// 其他圖片URL
+        /// </summary>
+        public List<string> Thumbnails { get; set; }
 
     }
 }

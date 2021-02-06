@@ -11,7 +11,7 @@ using System.Linq;
 using System.Threading.Tasks;
 namespace MCS_oneday_intern.Controllers
 {
-    public class ProductDetailControllor : Controller
+    public class ProductDetailController : Controller
     {
         
         public ActionResult Index(int ProductNumber)

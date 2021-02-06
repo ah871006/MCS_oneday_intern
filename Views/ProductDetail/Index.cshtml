@@ -10,7 +10,7 @@
         <!--product-details-->
         <div class="col-sm-5">
             <div class="view-product">
-                <img src="@ViewBag.Product.imageURL" alt="" />
+                <img src="@ViewBag.Product.ImageURL" alt="" />
                 <h3>ZOOM</h3>
             </div>
             
@@ -36,6 +36,40 @@
                 <p><b>Brand:</b> E-SHOPPER</p>
             </div><!--/product-information-->
         </div>
+
+        <div id="similar-product" class="col-sm-7 carousel slide" data-ride="carousel" style="margin:auto">
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+                @{ var quantity = 0;}
+                @foreach (var picture in ViewBag.Product.Thumbnails)
+                {
+                    if (quantity == 0)
+                    {
+                        <div class="item active" style="padding-left: 170px;">
+                            <a href=""><img src="@picture" width="100" height="100"></a>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="item" style="padding-left: 170px;">
+                            <a href=""><img src="@picture" width="100" style="left:auto;right:0"  alt=""></a>
+                        </div>
+                    }
+                    quantity++;
+                }
+
+            </div>
+            <!-- Controls -->
+            <a class="left item-control" href="#similar-product" data-slide="prev">
+                <i class="fa fa-angle-left"></i>
+            </a>
+            <a class="right item-control" href="#similar-product" data-slide="next">
+                <i class="fa fa-angle-right"></i>
+            </a>
+
+        </div>
+        
     </div><!--/product-details-->
 
     <div class="category-tab shop-details-tab">
