@@ -1,0 +1,16 @@
+[
+  {
+    "Product_Name": "QQQ",
+    "Category": "Shoes",
+    "Price": 100,
+    "Remark": "test",
+    "imageURL": "https://assets.ajio.com/medias/sys_master/root/h0e/h57/14092954894366/-473Wx593H-460455972-black-MODEL.jpg"
+  },
+  {
+    "Product_Name": "BBB",
+    "Category": "Shoes",
+    "Price": 200,
+    "Remark": "test",
+    "imageURL": "https://assets.ajio.com/medias/sys_master/root/h0e/h57/14092954894366/-473Wx593H-460455972-black-MODEL.jpg"
+  }
+]

@@ -1,9 +1,12 @@
-﻿using MCS_oneday_intern.Models;
+﻿
+using MCS_oneday_intern.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -20,6 +23,13 @@ namespace MCS_oneday_intern.Controllers
 
         public IActionResult Index()
         {
+            var path = "JsonData/fake_DB.json";
+            //var Products = new List<Product>();
+            using (StreamReader sr = new StreamReader(path))
+            {
+                var Products = JsonConvert.DeserializeObject<List<Product>>(sr.ReadToEnd());
+                ViewBag.Products = Products;
+            }
             return View();
         }
 
