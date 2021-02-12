@@ -3,7 +3,7 @@
 *@
 @{
     Layout = "_Layout";
-    ViewData["Title"] = "Product Page";
+    ViewData["Title"] = "一日實習生電商網頁";
 }
 <div class="col-sm-9 padding-right">
     <div class="product-details">
@@ -21,19 +21,22 @@
                 <!--/product-information-->
                 <h2>@ViewBag.Product.Product_Name</h2>
                 <p>Web ID: 1089772</p>
-                <img src="~/images/product-details/rating.png" alt="" />
+                <div>
+                    <img src="~/images/product-details/rating.png" alt="" />
+                </div>
+                <div>
+                    <span class="product-price">價格 $@ViewBag.Product.Price</span>
+                </div>
                 <span>
-                    <span>US $@ViewBag.Product.Price</span>
-                    <label>Quantity:</label>
-                    <input type="text" value="3" />
+                    <label>購買數量:</label>
+                    <input type="number" value="1" min="1" max="@ViewBag.Product.Inventory"/>
                     <button type="button" class="btn btn-fefault cart">
                         <i class="fa fa-shopping-cart"></i>
-                        Add to cart
+                        加入購物車
                     </button>
                 </span>
-                <p><b>Availability:</b> In Stock</p>
-                <p><b>Condition:</b> New</p>
-                <p><b>Brand:</b> E-SHOPPER</p>
+                <p><b>貨源:</b>庫存</p>
+                <p><b>品牌:@ViewBag.Product.Brand</b></p>
             </div><!--/product-information-->
         </div>
 
