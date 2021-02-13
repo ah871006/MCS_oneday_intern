@@ -16,9 +16,8 @@ namespace MCS_oneday_intern.Controllers
         
         public ActionResult Index(int ProductNumber = 0)
         {
-            var path = "JsonData/fake_DB.json";
-            //var Products = new List<Product>();
-            using (StreamReader sr = new StreamReader(path))
+            var inventoryPath = "JsonData/inventory.json";
+            using (StreamReader sr = new StreamReader(inventoryPath))
             {
                 var Products = JsonConvert.DeserializeObject<List<Product>>(sr.ReadToEnd());
                 ViewBag.Product = Products[ProductNumber];
@@ -28,7 +27,7 @@ namespace MCS_oneday_intern.Controllers
         
         public ActionResult Buy(int ProductNumber, int quantity)
         {
-            var path = "JsonData/fake_DB.json";
+            var path = "JsonData/inventory.json";
             //var Products = new List<Product>();
             var json = string.Empty;
             using (StreamReader sr = new StreamReader(path))

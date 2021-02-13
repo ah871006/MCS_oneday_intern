@@ -25,18 +25,20 @@
                     <img src="~/images/product-details/rating.png" alt="" />
                 </div>
                 <div>
-                    <span class="product-price">價格 $@ViewBag.Product.Price</span>
+                    <span class="product-price" id="price">總價格 $@ViewBag.Product.Price</span>
                 </div>
-                <span>
-                    <label>購買數量:</label>
-                    <input type="number" value="1" min="1" max="@ViewBag.Product.Inventory" id="buy_quantity"/>
-                    <button type="button" class="btn btn-fefault cart" id="buy">
-                        <i class="fa fa-shopping-cart"></i>
-                        購買
-                    </button>
-                </span>
-                <p><b>貨源:</b>庫存</p>
-                <p><b>品牌:@ViewBag.Product.Brand</b></p>
+                <div>
+                    <span>
+                        <label>購買數量:</label>
+                        <input type="number" id="buy_quantity" value="1" min="1" max="@ViewBag.Product.Inventory" onChange="updateInput(100)"/>
+                        <button type="button" class="btn btn-fefault cart" id="buy">
+                            <i class="fa fa-shopping-cart"></i>
+                            購買
+                        </button>
+                    </span>
+                </div>
+                <p><b>存貨數量: @ViewBag.Product.Inventory</b></p>
+                <p><b>品牌: @ViewBag.Product.Brand</b></p>
             </div><!--/product-information-->
         </div>
 
@@ -110,10 +112,9 @@
 
         </div>
     </div><!--/category-tab-->
-
-
 </div>
 
+<script src="~/js/Shopping/productDetail.js" asp-append-version="true"></script>
 <script src="~/js/jquery.js"></script>
 <script src="~/js/bootstrap.min.js"></script>
 <script>

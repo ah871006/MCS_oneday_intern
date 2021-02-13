@@ -2,7 +2,7 @@
   {
     "ProductId": 0,
     "Product_Name": "QQQ",
-    "Inventory": 6,
+    "Inventory": 0,
     "Category": "Shoes",
     "Brand": "Microsoft",
     "Price": 100,
@@ -14,9 +14,9 @@
     ]
   },
   {
-    "ProductId": 1,
+    "ProductId": 0,
     "Product_Name": "BBB",
-    "Inventory": 19,
+    "Inventory": 20,
     "Category": "Shoes",
     "Brand": "Microsoft",
     "Price": 200,
