@@ -44,7 +44,7 @@ namespace MCS_oneday_intern.Controllers
                 json = JsonConvert.SerializeObject(products.ToArray(),Formatting.Indented);
             }
             System.IO.File.WriteAllText(path, json);
-            return Ok(new{ message="ok"});
+            return Ok(new{ message="ok", deductionQuantity=quantity});
         }
 
         public ActionResult SubmitReview(Review reviewModel)

@@ -5,22 +5,22 @@
     Layout = "_Layout";
     ViewData["Title"] = "一日實習生電商網頁";
 }
-<div class="col-sm-9 padding-right">
+<div class="col-sm-12 padding-right">
     <div class="product-details">
         <!--product-details-->
-        <div class="col-sm-5">
+        <div class="col-sm-8">
             <div class="view-product">
                 <img src="@ViewBag.Product.ImageURL" alt="" />
-                <h3>ZOOM</h3>
+                @* <h3>ZOOM</h3> *@
             </div>
             
 
         </div>
-        <div class="col-sm-7">
+        <div class="col-sm-4">
             <div class="product-information">
                 <!--/product-information-->
                 <h2>@ViewBag.Product.Product_Name</h2>
-                <p><b>品牌: @ViewBag.Product.Brand</b></p>
+                <p><b>@ViewBag.Product.Brand</b></p>
                 <div>
                     <img src="~/images/product-details/rating.png" alt="" />
                 </div>
@@ -48,7 +48,6 @@
                 @* <p><b>存貨數量: @ViewBag.Product.Inventory</b></p> *@
             </div><!--/product-information-->
         </div>
-
         <div id="similar-product" class="col-sm-7 carousel slide" data-ride="carousel" style="margin:auto">
 
             <!-- Wrapper for slides -->
@@ -83,7 +82,9 @@
         </div>
         
     </div><!--/product-details-->
-
+    <div>
+        <blockquote class="head-line">@ViewBag.Product.Remark</blockquote>
+    </div>
     <div class="category-tab shop-details-tab">
         <!--category-tab-->
         <div class="col-sm-12">
@@ -148,7 +149,7 @@ $("#buy").on("click",
     }
     $.post(buyurl, arg,  (data)=>{
         console.log(data);
-        alert("扣庫成功");
+        alert("扣庫成功 - 已購買數量:"+String(data.deductionQuantity));
         window.location.reload();
     })
 });
