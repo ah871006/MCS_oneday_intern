@@ -29,10 +29,10 @@
                 </div>
                 <span>
                     <label>購買數量:</label>
-                    <input type="number" value="1" min="1" max="@ViewBag.Product.Inventory"/>
-                    <button type="button" class="btn btn-fefault cart">
+                    <input type="number" value="1" min="1" max="@ViewBag.Product.Inventory" id="buy_quantity"/>
+                    <button type="button" class="btn btn-fefault cart" id="buy">
                         <i class="fa fa-shopping-cart"></i>
-                        加入購物車
+                        購買
                     </button>
                 </span>
                 <p><b>貨源:</b>庫存</p>
@@ -113,3 +113,23 @@
 
 
 </div>
+
+<script src="~/js/jquery.js"></script>
+<script src="~/js/bootstrap.min.js"></script>
+<script>
+$("#buy").on("click", 
+()=>{
+    let buyurl = '@Url.Action("Buy")'
+    let num = $("#buy_quantity").val();
+    let productid = @ViewBag.Product.ProductId;
+    let arg={
+        ProductNumber : productid, 
+        quantity: num
+    }
+    console.log(arg);
+    $.post(buyurl, arg,  (data)=>{
+        console.log(data);
+        alert("扣庫成功");
+    })
+});
+</script>

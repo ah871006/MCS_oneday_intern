@@ -8,6 +8,10 @@ namespace MCS_oneday_intern.Models
     public class Product
     {
         /// <summary>
+        /// 產品id(json的第幾個產品)
+        /// </summary>
+        public int ProductId { get; set; }
+        /// <summary>
         /// 產品名稱
         /// </summary>
         public string Product_Name { get; set; }

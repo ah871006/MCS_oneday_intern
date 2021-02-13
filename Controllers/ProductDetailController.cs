@@ -14,7 +14,7 @@ namespace MCS_oneday_intern.Controllers
     public class ProductDetailController : Controller
     {
         
-        public ActionResult Index(int ProductNumber)
+        public ActionResult Index(int ProductNumber = 0)
         {
             var path = "JsonData/fake_DB.json";
             //var Products = new List<Product>();
@@ -24,6 +24,22 @@ namespace MCS_oneday_intern.Controllers
                 ViewBag.Product = Products[ProductNumber];
             }
             return View();
+        }
+        
+        public ActionResult Buy(int ProductNumber, int quantity)
+        {
+            var path = "JsonData/fake_DB.json";
+            //var Products = new List<Product>();
+            var json = string.Empty;
+            using (StreamReader sr = new StreamReader(path))
+            {
+                var products = JsonConvert.DeserializeObject<List<Product>>(sr.ReadToEnd());
+                var product = products[ProductNumber];
+                product.Inventory -= quantity;
+                json = JsonConvert.SerializeObject(products.ToArray(),Formatting.Indented);
+            }
+            System.IO.File.WriteAllText(path, json);
+            return Ok(new{ message="ok"});
         }
     }
 }
