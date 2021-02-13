@@ -1233,7 +1233,7 @@ h2.title {
     margin-top: 18px;
 }
 
-.product-information span span {
+.product-price {
     color: #FE980F;
     float: left;
     font-family: 'Roboto', sans-serif;
@@ -2438,4 +2438,9 @@ textarea {
 
 .contact-info .social-networks ul li a:hover {
     color: #FE980F;
+}
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.6;
 }

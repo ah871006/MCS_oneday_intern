@@ -13,9 +13,19 @@ namespace MCS_oneday_intern.Models
         public string Product_Name { get; set; }
 
         /// <summary>
+        /// 產品剩餘數量
+        /// </summary>
+        public int Inventory { get; set; }
+
+        /// <summary>
         /// 產品種類
         /// </summary>
         public string Category { get; set; }
+
+        /// <summary>
+        /// 產品品牌
+        /// </summary>
+        public string Brand { get; set; }
 
         /// <summary>
         /// 價格

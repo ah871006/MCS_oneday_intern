@@ -1,23 +1,26 @@
-[
-  {
-    "Product_Name": "QQQ",
-    "Category": "Shoes",
-    "Price": 100,
-    "Remark": "test",
-    "imageURL": "https://assets.ajio.com/medias/sys_master/root/h0e/h57/14092954894366/-473Wx593H-460455972-black-MODEL.jpg",
-    "thumbnails": [
-      "https://assets.ajio.com/medias/sys_master/root/h0e/h57/14092954894366/-473Wx593H-460455972-black-MODEL.jpg",
-      "https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/i1-9cfea66d-b519-4b29-8e43-ce4164e8c558/adapt-bb-2-tie-dye-basketball-shoe-vdFwKS.jpg"
-    ]
-  },
-  {
-    "Product_Name": "BBB",
-    "Category": "Shoes",
-    "Price": 200,
-    "Remark": "test",
-    "imageURL": "https://assets.ajio.com/medias/sys_master/root/h0e/h57/14092954894366/-473Wx593H-460455972-black-MODEL.jpg",
-    "thumbnails": [
-      "https://assets.ajio.com/medias/sys_master/root/h0e/h57/14092954894366/-473Wx593H-460455972-black-MODEL.jpg"
-    ]
-  }
+[{
+        "Product_Name": "QQQ",
+        "Inventory": 10,
+        "Category": "Shoes",
+        "Brand": "Microsoft",
+        "Price": 100,
+        "Remark": "test",
+        "imageURL": "https://assets.ajio.com/medias/sys_master/root/h0e/h57/14092954894366/-473Wx593H-460455972-black-MODEL.jpg",
+        "thumbnails": [
+            "https://assets.ajio.com/medias/sys_master/root/h0e/h57/14092954894366/-473Wx593H-460455972-black-MODEL.jpg",
+            "https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/i1-9cfea66d-b519-4b29-8e43-ce4164e8c558/adapt-bb-2-tie-dye-basketball-shoe-vdFwKS.jpg"
+        ]
+    },
+    {
+        "Product_Name": "BBB",
+        "Inventory": 20,
+        "Category": "Shoes",
+        "Brand": "Microsoft",
+        "Price": 200,
+        "Remark": "test",
+        "imageURL": "https://assets.ajio.com/medias/sys_master/root/h0e/h57/14092954894366/-473Wx593H-460455972-black-MODEL.jpg",
+        "thumbnails": [
+            "https://assets.ajio.com/medias/sys_master/root/h0e/h57/14092954894366/-473Wx593H-460455972-black-MODEL.jpg"
+        ]
+    }
 ]

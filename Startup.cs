@@ -50,7 +50,7 @@ namespace MCS_oneday_intern
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=ProductDetail}/{action=Index}/{id?}");
             });
         }
     }
