@@ -1140,7 +1140,7 @@ h2.title {
     margin-top: 40px;
 }
 
-#reviews {
+.reviews {
     padding-left: 25px;
     padding-right: 25px;
 }
@@ -1212,6 +1212,10 @@ h2.title {
     position: absolute;
     top: 0;
     left: 0
+}
+
+.warn {
+    color: rgb(245, 39, 39)
 }
 
 .product-information h2 {
@@ -1288,9 +1292,10 @@ h2.title {
 .shop-details-tab .col-sm-12 {
     padding-left: 0;
     padding-right: 0;
+    margin-bottom: 15px;
 }
 
-#reviews ul {
+.reviews ul {
     background: #FFFFFF;
     border: 0 none;
     list-style: none outside none;
@@ -1298,11 +1303,11 @@ h2.title {
     padding: 0;
 }
 
-#reviews ul li {
+.reviews ul li {
     display: inline-block;
 }
 
-#reviews ul li a {
+.reviews ul li a {
     color: #696763;
     display: block;
     font-family: 'Roboto', sans-serif;
@@ -1310,25 +1315,25 @@ h2.title {
     padding-right: 15px;
 }
 
-#reviews ul li a i {
+.reviews ul li a i {
     color: #FE980F;
     padding-right: 8px;
 }
 
-#reviews ul li a:hover {
+.reviews ul li a:hover {
     background: #fff;
     color: #FE980F;
 }
 
-#reviews p {
+.reviews p {
     color: #363432;
 }
 
-#reviews form span {
+.reviews form span {
     display: block;
 }
 
-#reviews form span input {
+.reviews form span input {
     background: #F0F0E9;
     border: 0 none;
     color: #A6A6A1;
@@ -1339,11 +1344,11 @@ h2.title {
     width: 48%;
 }
 
-#reviews form span input:last-child {
+.reviews form span input:last-child {
     margin-left: 3%;
 }
 
-#reviews textarea {
+.reviews textarea {
     background: #F0F0E9;
     border: medium none;
     color: #A6A6A1;
@@ -1357,7 +1362,7 @@ h2.title {
     width: 99.5%;
 }
 
-#reviews button {
+.reviews button {
     background: #FE980F;
     border: 0 none;
     border-radius: 0;
@@ -2124,6 +2129,11 @@ textarea {
 .socials-share {
     margin-bottom: 30px;
     margin-top: 18px;
+}
+
+.second-info {
+    color: #a7a7a7;
+    font-size: 20px;
 }
 
 .commnets .media-object {

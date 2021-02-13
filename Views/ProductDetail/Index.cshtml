@@ -20,7 +20,7 @@
             <div class="product-information">
                 <!--/product-information-->
                 <h2>@ViewBag.Product.Product_Name</h2>
-                <p>Web ID: 1089772</p>
+                <p><b>品牌: @ViewBag.Product.Brand</b></p>
                 <div>
                     <img src="~/images/product-details/rating.png" alt="" />
                 </div>
@@ -30,15 +30,22 @@
                 <div>
                     <span>
                         <label>購買數量:</label>
-                        <input type="number" id="buy_quantity" value="1" min="1" max="@ViewBag.Product.Inventory" onChange="updateInput(100)"/>
+                        <input type="number" id="buy_quantity" value="1" min="1" max="@ViewBag.Product.Inventory" onChange="updateInput('@ViewBag.Product.Price')"/>
                         <button type="button" class="btn btn-fefault cart" id="buy">
                             <i class="fa fa-shopping-cart"></i>
                             購買
                         </button>
                     </span>
                 </div>
-                <p><b>存貨數量: @ViewBag.Product.Inventory</b></p>
-                <p><b>品牌: @ViewBag.Product.Brand</b></p>
+                @{
+                    if(ViewBag.Product.Inventory <= 0){
+                        <p><b>存貨數量: </b><b class="warn">暫無存貨</b></p>
+                    }
+                    else{
+                        <p><b>存貨數量: </b><b class="second-info">@ViewBag.Product.Inventory</b></p>
+                    }
+                }
+                @* <p><b>存貨數量: @ViewBag.Product.Inventory</b></p> *@
             </div><!--/product-information-->
         </div>
 
@@ -81,35 +88,42 @@
         <!--category-tab-->
         <div class="col-sm-12">
             <ul class="nav nav-tabs">
-                <li class="active"><a href="#reviews" data-toggle="tab">Reviews (5)</a></li>
+                <li class="active"><a href="#reviews" data-toggle="tab">評論 (@ViewBag.Reviews.Count)</a></li>
             </ul>
         </div>
         <div class="tab-content">
-
-            <div class="tab-pane fade active in" id="reviews">
-                <div class="col-sm-12">
-                    <ul>
-                        <li><a href=""><i class="fa fa-user"></i>EUGEN</a></li>
-                        <li><a href=""><i class="fa fa-clock-o"></i>12:41 PM</a></li>
-                        <li><a href=""><i class="fa fa-calendar-o"></i>31 DEC 2014</a></li>
-                    </ul>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                    <p><b>Write Your Review</b></p>
-
-                    <form action="#">
-                        <span>
-                            <input type="text" placeholder="Your Name" />
-                            <input type="email" placeholder="Email Address" />
-                        </span>
-                        <textarea name=""></textarea>
-                        <b>Rating: </b> <img src="~/images/product-details/rating.png" alt="" />
-                        <button type="button" class="btn btn-default pull-right">
-                            Submit
-                        </button>
-                    </form>
+            @foreach (var review in ViewBag.Reviews)
+            {
+                var reviewTime = review.ReviewTime.ToString("hh:mm tt");
+                var reviewDate = review.ReviewTime.ToString("yyyy/MM/dd");
+                <div class="tab-pane fade active in reviews">
+                    <div class="col-sm-12">
+                        <ul>
+                            <li><a href=""><i class="fa fa-user"></i>@review.Reviewer</a></li>
+                            <li><a href=""><i class="fa fa-clock-o"></i>@reviewTime</a></li>
+                            <li><a href=""><i class="fa fa-calendar-o"></i>@reviewDate</a></li>
+                        </ul>
+                        <p>@review.ReviewContent</p>
+                    </div>
                 </div>
+            }
+            <div class="tab-pane fade active in reviews">
+                <form action="#">
+                    <div class="col-sm-12">
+                        <p><b>撰寫評論</b></p>
+                    </div>
+                    <span>
+                        <input id="reviewer" type="text" placeholder="使用者名稱" required/>
+                        <input id="reviewerEmail" type="email" placeholder="電子郵件" required/>
+                    </span>
+                    <textarea id="reviewContent" placeholder="你的評論內容" required></textarea>
+                    @* <b>Rating: </b> <img src="~/images/product-details/rating.png" alt="" /> *@
+                    <button type="submit" class="btn btn-default pull-right" onClick="onReviewSubmit()">
+                        提交
+                    </button>
+                </form>
+                <div id="reviewPoster" data-request-url='@Url.Action("SubmitReview")'></div>
             </div>
-
         </div>
     </div><!--/category-tab-->
 </div>
@@ -128,9 +142,14 @@ $("#buy").on("click",
         quantity: num
     }
     console.log(arg);
+    if(num > @ViewBag.Product.Inventory){
+        alert("購買數量超出庫存請重新選擇");
+        return;
+    }
     $.post(buyurl, arg,  (data)=>{
         console.log(data);
         alert("扣庫成功");
+        window.location.reload();
     })
 });
 </script>
