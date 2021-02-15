@@ -131,6 +131,7 @@
 <script src="~/js/Shopping/productDetail.js" asp-append-version="true"></script>
 <script src="~/js/jquery.js"></script>
 <script src="~/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
 // 幫購買按鍵加入點擊的所需的function
 $("#buy").on("click", 
@@ -145,9 +146,10 @@ $("#buy").on("click",
     let productid = @ViewBag.Product.ProductId;
 
     // 將購買數量及產品Id包裝成一個物件
+    let tempUrl = '192.168.1.113:9090/test';
     let arg={
         ProductNumber : productid, 
-        quantity: num
+        quantity: parseInt(num)
     }
     console.log(arg);
 
@@ -163,5 +165,16 @@ $("#buy").on("click",
         alert("扣庫成功 - 已購買數量:"+String(data.deductionQuantity));
         window.location.reload();
     })
+
+    // 加分題
+    $.ajax({
+        method: 'POST',
+        url: 'http://192.168.1.109:5051/Home/GetProductData',
+        dataType: 'json',
+        data: arg,
+        success: function(data) {
+            console.log(data);
+        }
+    });
 });
 </script>
