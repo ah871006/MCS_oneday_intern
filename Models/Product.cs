@@ -14,7 +14,7 @@ namespace MCS_oneday_intern.Models
         /// <summary>
         /// 產品名稱
         /// </summary>
-        public string Product_Name { get; set; }
+        public string ProductName { get; set; }
 
         /// <summary>
         /// 產品剩餘數量
