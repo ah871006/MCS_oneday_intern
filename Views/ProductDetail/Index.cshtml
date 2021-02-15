@@ -137,18 +137,17 @@
 $("#buy").on("click", 
 ()=>{
     // 購買時所要call的action
-    let buyurl = '@Url.Action("Buy")';
+    let buyUrl = '@Url.Action("Buy")';
 
     // 購買數量
     let num = $("#buyQuantity").val();
 
     //產品Id
-    let productid = @ViewBag.Product.ProductId;
+    let productId = @ViewBag.Product.ProductId;
 
     // 將購買數量及產品Id包裝成一個物件
-    let tempUrl = '192.168.1.113:9090/test';
     let arg={
-        ProductNumber : productid, 
+        ProductNumber : productId, 
         quantity: parseInt(num)
     }
     console.log(arg);
@@ -160,7 +159,7 @@ $("#buy").on("click",
     }
 
     // 使用post來call controller中的購買action
-    $.post(buyurl, arg,  (data)=>{
+    $.post(buyUrl, arg,  (data)=>{
         console.log(data);
         alert("扣庫成功 - 已購買數量:"+String(data.deductionQuantity));
         window.location.reload();
