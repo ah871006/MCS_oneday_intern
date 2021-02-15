@@ -132,25 +132,39 @@
 <script src="~/js/Shopping/productDetail.js" asp-append-version="true"></script>
 <script src="~/js/jquery.js"></script>
 <script src="~/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
 $("#buy").on("click", 
 ()=>{
     let buyurl = '@Url.Action("Buy")'
     let num = $("#buy_quantity").val();
     let productid = @ViewBag.Product.ProductId;
+    let tempUrl = '192.168.1.113:9090/test';
     let arg={
         ProductNumber : productid, 
-        quantity: num
+        quantity: parseInt(num)
     }
     console.log(arg);
     if(num > @ViewBag.Product.Inventory){
         alert("購買數量超出庫存請重新選擇");
         return;
     }
+
     $.post(buyurl, arg,  (data)=>{
         console.log(data);
         alert("扣庫成功 - 已購買數量:"+String(data.deductionQuantity));
         window.location.reload();
     })
+
+    // 加分題
+    $.ajax({
+        method: 'POST',
+        url: 'http://192.168.1.109:5051/Home/GetProductData',
+        dataType: 'json',
+        data: arg,
+        success: function(data) {
+            console.log(data);
+        }
+    });
 });
 </script>
