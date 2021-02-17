@@ -1,3 +1,49 @@
+// 幫購買按鍵加入點擊的所需的function
+function onBuyClick(productId, inventory) {
+    // 購買時所要call的action
+    let buyUrl = $("#buyUrl").data('request-url');
+
+    // 購買數量
+    let num = $("#buyQuantity").val();
+
+    // 將購買數量及產品Id包裝成一個物件
+    let arg = {
+        productNumber: productId,
+        quantity: num,
+        inventory: inventory - num,
+    }
+
+    // 若存貨小於購買數量則購買失敗
+    if (num > inventory) {
+        alert("購買數量超出庫存請重新選擇");
+        return;
+    }
+
+    // 加分題
+    $.ajax({
+        method: 'POST',
+        url: 'http://172.16.10.229:51113/Home/GetProductData',
+        dataType: 'json',
+        data: arg,
+        success: function(data) {
+            console.log(data);
+        }
+    });
+
+    // 使用post來call controller中的購買action
+    $.post(buyUrl, arg, (data) => {
+        console.log(data);
+        alert("扣庫成功 - 已購買數量:" + String(data.deductionQuantity));
+        window.location.reload();
+    })
+}
+
+// 點擊預覽圖片時變更大圖
+function onClickImage(imageUrl) {
+    // 更新圖片
+    $("#banner").attr("src", imageUrl);
+}
+
 // 當購買數量有變化時更新購買總價格
 function updateInput(unitPrice) {
     // 購買數量

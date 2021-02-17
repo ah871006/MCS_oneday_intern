@@ -10,7 +10,7 @@
         <!--product-details-->
         <div class="col-sm-8">
             <div class="view-product">
-                <img src="@ViewBag.Product.ImageURL" alt="" />
+                <img id="banner" src="@ViewBag.Product.ImageURL" alt="" />
             </div>
             
 
@@ -30,11 +30,12 @@
                     <span>
                         <label>購買數量:</label>
                         <input type="number" id="buyQuantity" value="1" min="1" max="@ViewBag.Product.Inventory" onChange="updateInput('@ViewBag.Product.Price')"/>
-                        <button type="button" class="btn btn-fefault cart" id="buy">
+                        <button type="button" class="btn btn-fefault cart" id="buy" onClick="onBuyClick('@ViewBag.Product.ProductId', '@ViewBag.Product.Inventory')">
                             <i class="fa fa-shopping-cart"></i>
                             購買
                         </button>
                     </span>
+                    <div id="buyUrl" data-request-url='@Url.Action("Buy")'></div>
                 </div>
                 @{
                     if(ViewBag.Product.Inventory <= 0){
@@ -47,7 +48,7 @@
                 @* <p><b>存貨數量: @ViewBag.Product.Inventory</b></p> *@
             </div><!--/product-information-->
         </div>
-        <div id="similar-product" class="col-sm-7 carousel slide" data-ride="carousel" style="margin:auto">
+        <div id="similar-product" class="col-sm-7 carousel slide" data-ride="carousel">
 
             <!-- Wrapper for slides -->
             <div class="carousel-inner">
@@ -57,13 +58,13 @@
                     if (quantity == 0)
                     {
                         <div class="item active" style="padding-left: 170px;">
-                            <a href=""><img src="@picture" width="100" height="100"></a>
+                            <img src="@picture" width="100"  height="100" style="left:auto;right:0"  onClick="onClickImage('@picture')">
                         </div>
                     }
                     else
                     {
                         <div class="item" style="padding-left: 170px;">
-                            <a href=""><img src="@picture" width="100" style="left:auto;right:0"  alt=""></a>
+                            <img src="@picture" width="100"  height="100" style="left:auto;right:0"  onClick="onClickImage('@picture')">
                         </div>
                     }
                     quantity++;
@@ -131,48 +132,3 @@
 <script src="~/js/Shopping/productDetail.js" asp-append-version="true"></script>
 <script src="~/js/jquery.js"></script>
 <script src="~/js/bootstrap.min.js"></script>
-<script>
-// 幫購買按鍵加入點擊的所需的function
-$("#buy").on("click", 
-()=>{
-    // 購買時所要call的action
-    let buyUrl = '@Url.Action("Buy")';
-
-    // 購買數量
-    let num = $("#buyQuantity").val();
-
-    //產品Id
-    let productId = @ViewBag.Product.ProductId;
-
-    // 將購買數量及產品Id包裝成一個物件
-    let arg={
-        ProductNumber : productId, 
-        quantity: parseInt(num)
-    }
-    console.log(arg);
-
-    // 若存貨小於購買數量則購買失敗
-    if(num > @ViewBag.Product.Inventory){
-        alert("購買數量超出庫存請重新選擇");
-        return;
-    }
-
-    // 使用post來call controller中的購買action
-    $.post(buyUrl, arg,  (data)=>{
-        console.log(data);
-        alert("扣庫成功 - 已購買數量:"+String(data.deductionQuantity));
-        window.location.reload();
-    })
-
-    // 加分題
-    $.ajax({
-        method: 'POST',
-        url: 'http://192.168.1.109:5051/Home/GetProductData',
-        dataType: 'json',
-        data: arg,
-        success: function(data) {
-            console.log(data);
-        }
-    });
-});
-</script>
