@@ -4,17 +4,19 @@ function onBuyClick(productId, inventory) {
     let buyUrl = $("#buyUrl").data('request-url');
 
     // 購買數量
-    let num = $("#buyQuantity").val();
+    let num = parseInt($("#buyQuantity").val());
+
+    let inventoryNum = parseInt(inventory);
 
     // 將購買數量及產品Id包裝成一個物件
     let arg = {
         productNumber: productId,
         quantity: num,
-        inventory: inventory - num,
+        inventory: inventoryNum - num,
     }
 
     // 若存貨小於購買數量則購買失敗
-    if (num > inventory) {
+    if (num > inventoryNum) {
         alert("購買數量超出庫存請重新選擇");
         return;
     }
@@ -22,7 +24,7 @@ function onBuyClick(productId, inventory) {
     // 加分題
     $.ajax({
         method: 'POST',
-        url: 'http://172.16.10.229:51113/Home/GetProductData',
+        url: 'http://140.112.251.124:51113/Home/GetProductData',
         dataType: 'json',
         data: arg,
         success: function(data) {
